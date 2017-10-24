@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import Renderer from '../components/Renderer';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        hey
+      <div className="columns">
+        <Renderer />
       </div>
-    )
+    );
   }
 }
 
