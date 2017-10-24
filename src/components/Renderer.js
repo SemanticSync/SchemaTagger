@@ -30,6 +30,23 @@ class Renderer extends Component {
     );
   }
 
+  selectedText() {
+      let txt = '';
+      if (window.getSelection) {
+              txt = window.getSelection();
+              if (!txt) return;
+      } else if (document.getSelection) {
+          txt = document.getSelection();
+      } else if (document.selection) {
+          txt = document.selection.createRange().text;
+      }
+      if (!txt.toString()) return;
+      this.setState({ activeToolbarValue: txt.toString() }, () => {
+        this.props.hoistSelectedValue(this.state.activeToolbarValue)
+        this.setState({ activeToolbarValue: '' });
+      });
+}
+
   render() {
     return (
       <div className="column is-8 card" style={{ marginTop: '2%' }}>
@@ -54,7 +71,9 @@ class Renderer extends Component {
           </p>
         </div>
         <div className={"card-content " + (this.state.loading ? 'loader' : '')}>
-          {this.renderHtml()}
+          <span onMouseUp={this.selectedText.bind(this)}>
+            {this.renderHtml()}
+          </span>
         </div>
       </div>
     );

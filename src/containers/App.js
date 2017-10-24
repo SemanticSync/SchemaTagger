@@ -3,11 +3,30 @@ import Renderer from '../components/Renderer';
 import Sidebar from '../components/Sidebar';
 
 class App extends Component {
+  state = {
+    activeToolbarValue: '',
+    selectedTextValue: ''
+  }
+
+  getHoistId(e) {
+    this.setState({ activeToolbarItem: e });
+  }
+
+  getSelectedValue(selectedTextValue) {
+    this.setState({ selectedTextValue });
+  }
+
   render() {
     return (
       <div className="columns">
-        <Renderer />
-        <Sidebar />
+        <Renderer
+          hoistSelectedValue={this.getSelectedValue.bind(this)}
+        />
+        <Sidebar
+          activeToolbarValue={this.state.activeToolbarValue}
+          activeToolbarItem={this.state.activeToolbarItem}
+          hoistId={this.getHoistId.bind(this)}
+        />
       </div>
     );
   }
