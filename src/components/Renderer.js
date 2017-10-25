@@ -11,23 +11,12 @@ class Renderer extends Component {
 
   fetchWebsite() {
     this.setState({ loading: true }, () => {
-      axios.get(`http://localhost:3000/render/${this.state.inputURL}`)
+      axios.get(`${__API_URL__}/render/${this.state.inputURL}`)
       .then((res) => {
         this.setState({ html: res.data.html, loading: false });
       })
       .catch(err => console.log(err));
     });
-  }
-
-  renderHtml() {
-    if (this.state.html === undefined) {
-      return;
-    }
-    return (
-      <div>
-        {renderHTML(this.state.html)}
-      </div>
-    );
   }
 
   selectedText() {
@@ -42,14 +31,28 @@ class Renderer extends Component {
       }
       if (!txt.toString()) return;
       this.setState({ activeToolbarValue: txt.toString() }, () => {
-        this.props.hoistSelectedValue(this.state.activeToolbarValue)
-        this.setState({ activeToolbarValue: '' });
+        this.props.hoistSelectedValue(this.state.activeToolbarValue);
+        this.setState({ activeToolbarValue: '' }, () => {
+          this.props.hoistSelectedValue(this.state.activeToolbarValue);
+        });
       });
-}
+    }
+
+  renderHtml() {
+    if (this.state.html === undefined) {
+      return;
+    }
+    return (
+      <div>
+        {renderHTML(this.state.html)}
+      </div>
+    );
+  }
+
 
   render() {
     return (
-      <div className="column is-8 card" style={{ marginTop: '2%' }}>
+      <div className="column is-8 card shadow-1" style={{ marginTop: '2%' }}>
         <h3 className="has-text-centered">Enter URL</h3>
         <div className="field has-addons">
           <p className="control is-expanded">

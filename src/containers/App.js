@@ -23,7 +23,7 @@ class App extends Component {
           hoistSelectedValue={this.getSelectedValue.bind(this)}
         />
         <Sidebar
-          activeToolbarValue={this.state.activeToolbarValue}
+          selectedTextValue={this.state.selectedTextValue}
           activeToolbarItem={this.state.activeToolbarItem}
           hoistId={this.getHoistId.bind(this)}
         />
