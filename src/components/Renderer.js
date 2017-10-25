@@ -53,7 +53,7 @@ class Renderer extends Component {
   render() {
     return (
       <div className="column is-8 card shadow-1" style={{ marginTop: '2%' }}>
-        <h3 className="has-text-centered">Enter URL</h3>
+        <h3 className="has-text-centered">Please Enter URL</h3>
         <div className="field has-addons">
           <p className="control is-expanded">
             <input
