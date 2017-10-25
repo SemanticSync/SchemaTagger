@@ -11,7 +11,7 @@ app.use(morgan('tiny'));
 app.use(express.static(`${__dirname}/build`));
 
 app.get('*', (req, res) => {
-  res.sendFile(`${__dirname}/build/index.html`);
+  res.sendFile(`${__dirname}/index.html`);
 });
 
 app.listen(port, () => {
