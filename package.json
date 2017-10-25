@@ -7,7 +7,7 @@
     "node": "6.9.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specifed\" && exit 1",
     "hot": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --port 8083",
     "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
     "heroku-postbuild": "./node_modules/webpack/bin/webpack.js"
